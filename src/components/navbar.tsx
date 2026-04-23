@@ -1,79 +1,81 @@
-import { Moon, Sun, Menu, X } from "lucide-react";
-import { useTheme } from "./theme-provider";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar() {
-  const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const links = [
-    { href: "#home", label: "Home" },
-    { href: "#projects", label: "Projects" },
     { href: "#about", label: "About" },
+    { href: "#tech", label: "Tech" },
+    { href: "#projects", label: "Projects" },
+    { href: "#experience", label: "Experience" },
+    { href: "#community", label: "Community" },
     { href: "#contact", label: "Contact" },
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
-      <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
-        <a href="#home" className="text-2xl font-bold text-primary tracking-tight">
-          ZA
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "nav-scrolled py-4" : "bg-transparent py-6"}`}>
+      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+        <a href="#home" className="text-2xl font-cursive text-white flex items-center">
+          <span className="text-primary-green mr-1">&lt;</span>
+          Zubair
+          <span className="text-primary-green ml-1">/&gt;</span>
         </a>
 
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-10">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              className="text-[15px] font-medium text-text-light hover:text-primary-green transition-colors"
             >
               {link.label}
             </a>
           ))}
-          
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-full"
-          >
-            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-          </Button>
         </div>
 
-        <div className="flex md:hidden items-center">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="mr-2"
-          >
-            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-          </Button>
-          <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
+        <div className="md:hidden flex items-center">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+            {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+          </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden border-t border-border/40 bg-background absolute top-16 left-0 w-full shadow-lg">
-          <div className="flex flex-col py-4 px-4 space-y-4">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-bg-dark border-b border-white/5 overflow-hidden"
+          >
+            <div className="flex flex-col py-6 px-6 space-y-6">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg font-medium text-text-light hover:text-primary-green transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
+

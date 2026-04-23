@@ -1,26 +1,32 @@
-import { ThemeProvider } from "./components/theme-provider";
 import { Navbar } from "./components/navbar";
 import { Hero } from "./components/hero";
 import { Projects } from "./components/projects";
 import { About } from "./components/about";
 import { Contact } from "./components/contact";
 import { Footer } from "./components/footer";
+import { TechStack } from "./components/tech-stack";
+import { Experience } from "./components/experience";
+import { Community } from "./components/community";
+import { ScrollToTop } from "./components/scroll-to-top";
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
-      <div className="min-h-screen bg-background text-foreground flex flex-col font-sans antialiased selection:bg-primary/30">
-        <Navbar />
-        <main className="flex-1">
-          <Hero />
-          <Projects />
-          <About />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-    </ThemeProvider>
+    <div className="min-h-screen bg-bg text-white flex flex-col font-sans antialiased selection:bg-primary-green/30">
+      <Navbar />
+      <main className="flex-1">
+        <Hero />
+        <About />
+        <TechStack />
+        <Projects />
+        <Experience />
+        <Community />
+        <Contact />
+      </main>
+      <Footer />
+      <ScrollToTop />
+    </div>
   );
 }
 
 export default App;
+
