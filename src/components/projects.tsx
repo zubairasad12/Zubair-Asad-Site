@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Play, Layout } from "lucide-react";
+import { Github, ExternalLink, Play } from "lucide-react";
+import farmerImg from "@/assets/farmer.jpg";
+import fitnessImg from "@/assets/fitness.jpg";
+import habitImg from "@/assets/habit.jpg";
+import walletImg from "@/assets/wallet.jpg";
 
 const projects = [
   {
@@ -9,7 +13,7 @@ const projects = [
     tags: ["Flutter", "Dart", "Firebase"],
     githubUrl: "https://github.com/zubairasad12",
     liveUrl: "#",
-    gradient: "from-[#0f2027] via-[#203a43] to-[#2c5364]",
+    image: farmerImg,
   },
   {
     title: "Fitness Tracker",
@@ -18,7 +22,7 @@ const projects = [
     tags: ["Flutter", "HealthKit", "SQLite"],
     githubUrl: "https://github.com/zubairasad12",
     liveUrl: "#",
-    gradient: "from-[#1a1a2e] via-[#16213e] to-[#0f3460]",
+    image: fitnessImg,
   },
   {
     title: "Habit Tracker",
@@ -27,7 +31,7 @@ const projects = [
     tags: ["Flutter", "Riverpod", "Local DB"],
     githubUrl: "https://github.com/zubairasad12",
     liveUrl: "#",
-    gradient: "from-[#2d1b69] via-[#11998e] to-[#38ef7d]",
+    image: habitImg,
   },
   {
     title: "WalletWise",
@@ -36,7 +40,7 @@ const projects = [
     tags: ["Flutter", "Dart", "REST API"],
     githubUrl: "https://github.com/zubairasad12",
     liveUrl: "#",
-    gradient: "from-[#0f0c29] via-[#302b63] to-[#24243e]",
+    image: walletImg,
   },
 ];
 
@@ -65,25 +69,17 @@ export function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              {/* Project Image Placeholder / Header */}
-              <div className={`h-64 bg-gradient-to-br ${project.gradient} relative overflow-hidden flex items-center justify-center p-8`}>
+              {/* Project Image */}
+              <div className="h-64 bg-bg-dark relative overflow-hidden">
                 <div className="absolute top-4 left-4 bg-primary-green text-bg text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-10">
                   {project.category}
                 </div>
-                
-                {/* Visual Mockup Element */}
-                <div className="w-32 h-64 bg-bg-dark rounded-[2rem] border-4 border-white/10 relative shadow-2xl transform group-hover:scale-110 transition-transform duration-500">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-4 bg-black rounded-b-xl"></div>
-                  <div className="p-4 space-y-3 mt-6">
-                    <div className="h-2 w-full bg-white/5 rounded"></div>
-                    <div className="h-2 w-3/4 bg-white/5 rounded"></div>
-                    <div className="h-20 w-full bg-primary-green/5 rounded-xl border border-primary-green/10"></div>
-                    <div className="flex gap-2">
-                      <div className="h-8 w-8 rounded-full bg-white/5"></div>
-                      <div className="h-8 w-8 rounded-full bg-white/5"></div>
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg/60 via-transparent to-transparent pointer-events-none"></div>
               </div>
 
               <div className="p-8">

@@ -1,9 +1,10 @@
-import { SiFlutter, SiDart, SiFirebase, SiNodedotjs, SiReact, SiTypescript, SiPostgresql, SiMongodb, SiGit, SiDocker, SiKotlin, SiSwift } from "react-icons/si";
+import { SiFlutter, SiDart, SiFirebase, SiNodedotjs, SiReact, SiTypescript, SiPostgresql, SiMongodb, SiGit, SiDocker, SiKotlin, SiSwift, SiLaravel } from "react-icons/si";
 import { motion } from "framer-motion";
 
 const techs = [
   { icon: <SiFlutter />, label: "Flutter" },
   { icon: <SiDart />, label: "Dart" },
+  { icon: <SiLaravel />, label: "Laravel" },
   { icon: <SiFirebase />, label: "Firebase" },
   { icon: <SiNodedotjs />, label: "Node.js" },
   { icon: <SiReact />, label: "React" },
