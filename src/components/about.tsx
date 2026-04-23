@@ -47,7 +47,9 @@ export function About() {
 
             <div className="mt-10">
               <a 
-                href="mailto:zubairasad980@gmail.com" 
+                href={`${import.meta.env.BASE_URL}resume.html`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block bg-primary-green text-bg font-bold px-8 py-3 rounded-lg hover:scale-105 transition-transform glow-green"
               >
                 Download Resume

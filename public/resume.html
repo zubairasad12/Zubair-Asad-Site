@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zubair Asad — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #2D2E32;
+    --bg-dark: #25262A;
+    --green: #6EF3A5;
+    --text: #2c3e50;
+    --text-light: #5d6d7e;
+    --border: #e6e8eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: 'Montserrat', sans-serif; background: #f4f5f7; color: var(--text); }
+  .page {
+    max-width: 880px;
+    margin: 32px auto;
+    background: #fff;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+  }
+  .sidebar {
+    background: var(--bg);
+    color: #fff;
+    padding: 36px 28px;
+  }
+  .sidebar h1 { font-size: 22px; font-weight: 700; line-height: 1.2; }
+  .sidebar h1 .light { font-weight: 300; display: block; letter-spacing: 1px; font-size: 16px; color: #cfd2d6; }
+  .role { color: var(--green); font-size: 13px; margin-top: 8px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+  .avatar {
+    width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 22px;
+    background: linear-gradient(135deg, #3a3b40, #25262A);
+    display: flex; align-items: center; justify-content: center;
+    border: 3px solid var(--green);
+    overflow: hidden;
+  }
+  .avatar span { font-size: 48px; font-weight: 800; color: var(--green); font-family: 'Montserrat'; }
+  .sidebar-section { margin-top: 28px; }
+  .sidebar-section h3 {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--green); margin-bottom: 12px; font-weight: 700;
+  }
+  .sidebar-section p, .sidebar-section li {
+    font-size: 12.5px; color: #cfd2d6; line-height: 1.7; word-break: break-word;
+  }
+  .contact-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 8px; }
+  .contact-row .icon { color: var(--green); flex-shrink: 0; width: 14px; }
+  .skill-list { list-style: none; }
+  .skill-list li { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
+  .skill-bar { width: 80px; height: 5px; background: #3a3b40; border-radius: 99px; overflow: hidden; }
+  .skill-bar > div { height: 100%; background: var(--green); border-radius: 99px; }
+  .lang-list li { font-size: 12.5px; color: #cfd2d6; padding: 4px 0; }
+
+  .main { padding: 40px 44px; }
+  .main h2 {
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--bg); margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 2px solid var(--green); font-weight: 700;
+  }
+  .section { margin-bottom: 28px; }
+  .summary { font-size: 13.5px; color: var(--text-light); line-height: 1.7; }
+  .summary strong { color: var(--bg); font-weight: 600; }
+
+  .item { margin-bottom: 18px; padding-left: 16px; border-left: 2px solid var(--border); position: relative; }
+  .item::before {
+    content: ''; position: absolute; left: -6px; top: 6px;
+    width: 10px; height: 10px; background: var(--green); border-radius: 50%;
+  }
+  .item-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+  .item-title { font-size: 14.5px; font-weight: 700; color: var(--bg); }
+  .item-meta { font-size: 11.5px; color: var(--text-light); font-weight: 500; }
+  .item-org { font-size: 12.5px; color: var(--green); font-weight: 600; margin-bottom: 6px; }
+  .item-desc { font-size: 12.5px; color: var(--text-light); line-height: 1.65; }
+  .item-desc ul { padding-left: 18px; margin-top: 4px; }
+  .item-desc li { margin-bottom: 3px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .tag {
+    font-size: 10.5px; padding: 3px 8px; border-radius: 99px;
+    background: rgba(110,243,165,0.15); color: #2c8a5d;
+    font-weight: 600; letter-spacing: 0.3px;
+  }
+
+  .print-btn {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--green); color: var(--bg);
+    border: none; padding: 12px 22px; border-radius: 99px;
+    font-family: inherit; font-weight: 700; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(110,243,165,0.4);
+    font-size: 13px; letter-spacing: 0.5px;
+  }
+  .print-btn:hover { transform: translateY(-2px); }
+
+  @media print {
+    body { background: #fff; }
+    .page { box-shadow: none; margin: 0; max-width: none; border-radius: 0; }
+    .print-btn { display: none; }
+    @page { margin: 0; size: A4; }
+  }
+  @media (max-width: 720px) {
+    .page { grid-template-columns: 1fr; }
+    .main { padding: 28px 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <aside class="sidebar">
+    <div class="avatar"><span>ZA</span></div>
+    <h1>Zubair Asad<span class="light">Software Engineer</span></h1>
+    <div class="role">Flutter Developer</div>
+
+    <div class="sidebar-section">
+      <h3>Contact</h3>
+      <div class="contact-row"><span class="icon">✉</span><span>zubairasad980@gmail.com</span></div>
+      <div class="contact-row"><span class="icon">☎</span><span>+92 333 9140786</span></div>
+      <div class="contact-row"><span class="icon">⌂</span><span>Pakistan</span></div>
+      <div class="contact-row"><span class="icon">⌬</span><span>github.com/zubairasad12</span></div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Core Skills</h3>
+      <ul class="skill-list">
+        <li><span>Flutter</span><span class="skill-bar"><div style="width:95%"></div></span></li>
+        <li><span>Dart</span><span class="skill-bar"><div style="width:95%"></div></span></li>
+        <li><span>Laravel</span><span class="skill-bar"><div style="width:85%"></div></span></li>
+        <li><span>Firebase</span><span class="skill-bar"><div style="width:90%"></div></span></li>
+        <li><span>Node.js</span><span class="skill-bar"><div style="width:80%"></div></span></li>
+        <li><span>REST APIs</span><span class="skill-bar"><div style="width:90%"></div></span></li>
+        <li><span>PostgreSQL</span><span class="skill-bar"><div style="width:80%"></div></span></li>
+        <li><span>MongoDB</span><span class="skill-bar"><div style="width:75%"></div></span></li>
+        <li><span>Git / GitHub</span><span class="skill-bar"><div style="width:90%"></div></span></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Tools & Platforms</h3>
+      <p>Android Studio, VS Code, Xcode, Postman, Figma, Docker, Play Console, App Store Connect</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Languages</h3>
+      <ul class="lang-list">
+        <li>English — Professional</li>
+        <li>Urdu — Native</li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="section">
+      <h2>Profile</h2>
+      <p class="summary">
+        Passionate <strong>Flutter Developer</strong> with hands-on experience designing and shipping
+        cross-platform mobile applications for Android and iOS. Skilled in building clean, maintainable
+        codebases backed by <strong>Firebase</strong>, <strong>Laravel</strong> and <strong>REST APIs</strong>.
+        Strong focus on smooth user experience, state management, and pixel-perfect UI implementation.
+        Comfortable owning features end-to-end — from architecture and API integration to Play Store / App Store release.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Professional Experience</h2>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Flutter Developer</div>
+          <div class="item-meta">2023 — Present</div>
+        </div>
+        <div class="item-org">Freelance / Independent Projects</div>
+        <div class="item-desc">
+          <ul>
+            <li>Designed and shipped multiple production Flutter apps across finance, fitness, agri-tech and productivity verticals.</li>
+            <li>Integrated Firebase Auth, Firestore, Cloud Functions and Push Notifications for real-time, scalable backends.</li>
+            <li>Built RESTful integrations with Laravel and Node.js services; handled JWT auth and role-based access.</li>
+            <li>Published apps to Google Play and the App Store, managing release pipelines and crash analytics.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase</span>
+          <span class="tag">Laravel</span><span class="tag">REST API</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Mobile App Developer</div>
+          <div class="item-meta">2022 — 2023</div>
+        </div>
+        <div class="item-org">Cross-Platform Projects</div>
+        <div class="item-desc">
+          <ul>
+            <li>Delivered MVPs for early-stage clients with rapid iteration cycles and clean component architecture.</li>
+            <li>Implemented complex UI animations and custom widgets matching designer mockups.</li>
+            <li>Optimised app performance, reducing cold-start times and improving frame rates on lower-end devices.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">Flutter</span><span class="tag">Provider</span><span class="tag">Riverpod</span>
+          <span class="tag">SQLite</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Junior Developer</div>
+          <div class="item-meta">2021 — 2022</div>
+        </div>
+        <div class="item-org">Web & Mobile Internships</div>
+        <div class="item-desc">
+          <ul>
+            <li>Contributed to Laravel-based admin dashboards and REST API endpoints.</li>
+            <li>Worked closely with senior engineers on code reviews and Git workflows.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Featured Projects</h2>
+
+      <div class="item">
+        <div class="item-title">WalletWise — Personal Finance App</div>
+        <div class="item-desc">Expense tracking, budgeting, and analytics dashboard with charts and category insights. Secure auth with multi-card management.</div>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">REST API</span></div>
+      </div>
+
+      <div class="item">
+        <div class="item-title">Habit Tracker</div>
+        <div class="item-desc">Minimalist daily habit tracker with streaks, reminders and a clean visual journal. Local-first storage with offline support.</div>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Riverpod</span><span class="tag">SQLite</span></div>
+      </div>
+
+      <div class="item">
+        <div class="item-title">Fitness Tracker</div>
+        <div class="item-desc">Workout logging and calorie tracking with wearable integration and progress visualisations.</div>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">HealthKit</span><span class="tag">Firebase</span></div>
+      </div>
+
+      <div class="item">
+        <div class="item-title">Smart Farmer App</div>
+        <div class="item-desc">Agriculture management for crop tracking, weather, and farm-field monitoring with real-time data.</div>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Maps</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Education</h2>
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Bachelor of Science in Computer Science</div>
+          <div class="item-meta">2018 — 2022</div>
+        </div>
+        <div class="item-org">University of Pakistan</div>
+        <div class="item-desc">Coursework in Data Structures, Algorithms, OOP, Databases, Mobile App Development and Software Engineering.</div>
+      </div>
+    </div>
+  </main>
+</div>
+<button class="print-btn" onclick="window.print()">⬇ Download as PDF</button>
+</body>
+</html>
