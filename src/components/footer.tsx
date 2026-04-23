@@ -1,5 +1,7 @@
 import { Github, Linkedin, Instagram, Twitter } from "lucide-react";
-import { SiStackoverflow, SiMedium } from "react-icons/si";
+import { SiStackoverflow, SiMedium, SiWhatsapp } from "react-icons/si";
+
+const WHATSAPP_LINK = `https://wa.me/923339140786?text=${encodeURIComponent("Hi Zubair, I came across your portfolio and would love to connect.")}`;
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,6 +11,7 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
         <div className="flex gap-6 mb-10">
           {[
+            { icon: <SiWhatsapp className="w-5 h-5" />, href: WHATSAPP_LINK },
             { icon: <Linkedin className="w-5 h-5" />, href: "https://linkedin.com" },
             { icon: <Github className="w-5 h-5" />, href: "https://github.com/zubairasad12" },
             { icon: <Instagram className="w-5 h-5" />, href: "https://instagram.com" },

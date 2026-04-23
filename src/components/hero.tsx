@@ -1,5 +1,7 @@
 import { Github, Linkedin, Instagram, Twitter, MessageCircle, Play } from "lucide-react";
-import { SiStackoverflow, SiMedium } from "react-icons/si";
+import { SiStackoverflow, SiMedium, SiWhatsapp } from "react-icons/si";
+
+const WHATSAPP_LINK = `https://wa.me/923339140786?text=${encodeURIComponent("Hi Zubair, I came across your portfolio and would love to connect.")}`;
 import zubairImg from "@/assets/zubair-asad.png";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
@@ -66,6 +68,7 @@ export function Hero() {
 
             <div className="flex gap-4 pt-4">
               {[
+                { icon: <SiWhatsapp className="w-5 h-5" />, href: WHATSAPP_LINK },
                 { icon: <Linkedin className="w-5 h-5" />, href: "https://linkedin.com" },
                 { icon: <Github className="w-5 h-5" />, href: "https://github.com/zubairasad12" },
                 { icon: <Instagram className="w-5 h-5" />, href: "https://instagram.com" },
